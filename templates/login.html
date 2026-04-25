@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ t.lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utsav — Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a0e04; --saf: #d4681e; --bg: #fdf8f0; --bg2: #f7eed8; --card: #fffcf5;
+  --line: rgba(26,14,4,0.10); --line2: rgba(26,14,4,0.18);
+  --ff: 'Cormorant Garamond', serif; --fb: 'DM Sans', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--fb); background:var(--bg); color:var(--ink); display:flex; justify-content:center; align-items:center; min-height:100vh; }
+.auth-box { background:var(--card); padding:40px; border-radius:24px; border:1px solid var(--line); box-shadow:0 16px 50px rgba(26,14,4,.07); width:100%; max-width:400px; }
+.logo { display:flex; align-items:center; justify-content:center; gap:9px; text-decoration:none; margin-bottom:30px; }
+.logo-ring { width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--saf), #c8991e); display:flex; align-items:center; justify-content:center; font-size:.9rem; }
+.logo-name { font-family:var(--ff); font-size:1.6rem; font-weight:700; color:var(--ink); }
+.logo-name em { color:var(--saf); font-style:normal; }
+h2 { font-family:var(--ff); text-align:center; font-size:1.8rem; margin-bottom:20px; }
+.fg { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+.fg label { font-size:.75rem; font-weight:600; color:var(--ink); text-transform:uppercase; }
+.fg input { padding:12px; border:1.5px solid var(--line2); border-radius:10px; font-family:var(--fb); font-size:.9rem; background:var(--bg); outline:none; transition:border .25s; }
+.fg input:focus { border-color:var(--saf); box-shadow:0 0 0 3px rgba(212,104,30,.1); }
+.btn { width:100%; padding:13px; background:var(--ink); color:var(--bg); border:none; border-radius:40px; font-size:.9rem; font-weight:500; font-family:var(--fb); cursor:pointer; transition:all .25s; margin-top:10px; }
+.btn:hover { background:var(--saf); }
+.link { display:block; text-align:center; margin-top:20px; font-size:.85rem; color:var(--ink2); text-decoration:none; }
+.link:hover { color:var(--saf); }
+.flash { color:red; text-align:center; margin-bottom:15px; font-size:0.85rem; }
+</style>
+</head>
+<body>
+<div class="auth-box">
+  <a class="logo" href="/">
+    <div class="logo-ring">🪔</div>
+    <span class="logo-name">Ut<em>sav</em></span>
+  </a>
+  <h2>Welcome Back</h2>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form method="POST" action="/login">
+    <div class="fg">
+      <label>Email</label>
+      <input type="email" name="email" required>
+    </div>
+    <div class="fg">
+      <label>Password</label>
+      <input type="password" name="password" required>
+    </div>
+    <button type="submit" class="btn">Login</button>
+  </form>
+  <a href="/register" class="link">Don't have an account? Register</a>
+</div>
+</body>
+</html>

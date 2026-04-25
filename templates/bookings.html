@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ t.lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utsav — My Bookings</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a0e04; --saf: #d4681e; --bg: #fdf8f0; --bg2: #f7eed8; --card: #fffcf5;
+  --line: rgba(26,14,4,0.10); --line2: rgba(26,14,4,0.18);
+  --ff: 'Cormorant Garamond', serif; --fb: 'DM Sans', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:var(--fb); background:var(--bg); color:var(--ink); padding:40px 5%; }
+.nav-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; }
+.logo { display:flex; align-items:center; gap:9px; text-decoration:none; }
+.logo-ring { width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, var(--saf), #c8991e); display:flex; align-items:center; justify-content:center; font-size:.9rem; }
+.logo-name { font-family:var(--ff); font-size:1.6rem; font-weight:700; color:var(--ink); }
+.logo-name em { color:var(--saf); font-style:normal; }
+.back-link { font-size:0.9rem; color:var(--ink); text-decoration:none; font-weight:500; }
+.back-link:hover { color:var(--saf); }
+h1 { font-family:var(--ff); font-size:2.5rem; margin-bottom:20px; }
+.booking-card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px; margin-bottom:16px; box-shadow:0 4px 20px rgba(26,14,4,.04); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+.b-info h3 { font-family:var(--ff); font-size:1.5rem; color:var(--saf); margin-bottom:8px; }
+.b-info p { font-size:0.9rem; color:var(--ink2); margin-bottom:4px; }
+.b-status { background:var(--bg2); padding:8px 16px; border-radius:20px; font-size:0.8rem; font-weight:600; color:var(--ink); border:1px solid var(--line); }
+.no-bookings { text-align:center; padding:60px 20px; background:var(--card); border-radius:16px; border:1px dashed var(--line2); color:var(--ink2); }
+</style>
+</head>
+<body>
+  <div class="nav-top">
+    <a class="logo" href="/">
+      <div class="logo-ring">🪔</div>
+      <span class="logo-name">Ut<em>sav</em></span>
+    </a>
+    <a href="/" class="back-link">← Back to Home</a>
+  </div>
+
+  <h1>My Bookings</h1>
+
+  {% if bookings %}
+    {% for booking in bookings %}
+      <div class="booking-card">
+        <div class="b-info">
+          <h3>{{ booking.event_type }}</h3>
+          <p><strong>Date:</strong> {{ booking.date or 'Not specified' }}</p>
+          <p><strong>Guests:</strong> {{ booking.guests or 'Not specified' }}</p>
+          {% if booking.message %}
+            <p><strong>Message:</strong> {{ booking.message }}</p>
+          {% endif %}
+        </div>
+        <div class="b-status">Received</div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="no-bookings">
+      <h2>No bookings yet</h2>
+      <p style="margin-top:10px;">Ready to plan your dream event?</p>
+      <a href="/#contact" style="display:inline-block; margin-top:20px; padding:10px 24px; background:var(--ink); color:var(--bg); border-radius:40px; text-decoration:none;">Book Now</a>
+    </div>
+  {% endif %}
+</body>
+</html>
