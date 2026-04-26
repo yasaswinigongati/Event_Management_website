@@ -8,9 +8,9 @@
 
 - Affordable, simple, and made for everyone from villages to cities.
 
-#Technologies Used
+# Technologies Used
 
-Backend:
+##Backend:
 
 Python
 
@@ -24,11 +24,11 @@ SQLite — lightweight database
 
 Gunicorn — WSGI production server
 
-Frontend:
+##Frontend:
 
 HTML + Jinja2 — server-side templating
 
-Deployment:
+##Deployment:
 
 Hosted on Render.com (a cloud PaaS platform)
 
