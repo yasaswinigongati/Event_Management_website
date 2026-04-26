@@ -7,3 +7,5 @@
 - Plan Weddings, Birthdays, Corporate Events, Festivals, and Private Celebrations.
 
 - Affordable, simple, and made for everyone from villages to cities.
+
+live : https://event-management-website-rehe.onrender.com
