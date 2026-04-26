@@ -11,6 +11,7 @@
 #Technologies Used
 
 Backend:
+
 Python
 
 Flask — web framework (routing, sessions, templating)
