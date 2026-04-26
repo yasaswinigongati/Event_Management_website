@@ -8,6 +8,7 @@
 
 - Affordable, simple, and made for everyone from villages to cities.
 
+
 ##Technologies Used
 
 #Backend:
